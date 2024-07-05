@@ -21,4 +21,3 @@ EXPOSE 8080
 
 CMD ["/bin/bash","/run_gotty.sh"]
 
-CMD ["lscpu"]
